@@ -34,3 +34,10 @@
 1. para visualizar la respuesta del servidor, se configura un archivo con su respectivo index.css y app.js con la librería axios en este caso de preferencia.
 2. axios tomará la respuesta del servidor y se mostrará en un elemento html obtenido con un querySelector de Javascript
 3. si tienes un statusCode de 404, entonces el catch en javascript se hará cargo de manejarlo
+
+### redirects and auto imports
+
+1. desde netlify.toml, se configura la redirección, que significa que en vez de ir a la url .netlify/functions/etc iremos a /api/etc configurado en from, to es para escribir la url original hacia la cual el servidor va a buscar. :splat significa que varía el nombre dependiendo del nombre de la función.
+2. sin un status, arrojaría por default status code 301, lo que significa que redirigirá hacia la url original y además la cambiará automáticamente. Para que esto no suceda, se le da un status 200 para que la url se mantenga en /api/\* (el asterisco es para decir que es cualquier función)
+3. convencionalmente, el archivo toml usa espacios por cada título en corcehtes y comillas dobles
+4. si quieres eliminar los auto import de axios, desmarca la primera casilla en javascript sugest en las configuraciones de vscode
