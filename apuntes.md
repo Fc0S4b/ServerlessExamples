@@ -15,3 +15,16 @@
 8. context tiene info sobre donde la función está corriendo (autenticación setup, info sobre el acceso del user )
 9. un console.log se verá en el server (en la terminal de vs code)
 10. se necesita retornar un statusCode y un body, siempre se debe retornar un string en el body. Si quieres un objeto usa JSON.stringify
+
+### status code
+
+1. todos los navegadores por default hacen get request
+2. los status code indican la respuesta del servidor a la request que le hiciste, en resumen:
+
+- 100-199: respuestas informativas
+- 200-299: respuestas cumplidas (200 ok, 201 created)
+- 300-399: redirecciones
+- 400 - 499: errores de cliente
+- 500 -599: errores de servidor
+
+3. uno configura el código de status en la función. Procura usar el código correcto.
