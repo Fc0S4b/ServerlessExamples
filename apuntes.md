@@ -28,3 +28,9 @@
 - 500 -599: errores de servidor
 
 3. uno configura el código de status en la función. Procura usar el código correcto.
+
+### first example
+
+1. para visualizar la respuesta del servidor, se configura un archivo con su respectivo index.css y app.js con la librería axios en este caso de preferencia.
+2. axios tomará la respuesta del servidor y se mostrará en un elemento html obtenido con un querySelector de Javascript
+3. si tienes un statusCode de 404, entonces el catch en javascript se hará cargo de manejarlo
