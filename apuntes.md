@@ -41,3 +41,9 @@
 2. sin un status, arrojaría por default status code 301, lo que significa que redirigirá hacia la url original y además la cambiará automáticamente. Para que esto no suceda, se le da un status 200 para que la url se mantenga en /api/\* (el asterisco es para decir que es cualquier función)
 3. convencionalmente, el archivo toml usa espacios por cada título en corcehtes y comillas dobles
 4. si quieres eliminar los auto import de axios, desmarca la primera casilla en javascript sugest en las configuraciones de vscode
+
+### basic api function
+
+1. de nuevo, ya que estamos en terreno de node, importamos los datos de la api con require, estos datos son exportados con module.exports
+2. los datos del body tienen que ser string por lo que se realiza el cambio con JSON.stringify
+3. con estos datos se puede construir un frontend
