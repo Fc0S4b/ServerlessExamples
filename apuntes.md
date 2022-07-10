@@ -47,3 +47,13 @@
 1. de nuevo, ya que estamos en terreno de node, importamos los datos de la api con require, estos datos son exportados con module.exports
 2. los datos del body tienen que ser string por lo que se realiza el cambio con JSON.stringify
 3. con estos datos se puede construir un frontend
+
+### 'CORS' error fix
+
+1. cuando haces request a la api desde otro origen que no es el incialmente configurado, aparece un error que bloquea la respuesta, este es el error cors. Para solucionarlo, desde el proyecto local debes retornar en el exports.handler de la función una propiedad headers con :
+   headers: {
+   'Access-Control-Allow-Origin': '\*',
+   },
+2. puedes crear un repo en github para luego deployarlo en netlify. Al hacer cambios localmente y empujarlos a github se modificará automáticamente en netlify
+3. no olvides cambiar la url desde donde haces la petición con axios con la url que te da netflify una vez deployado el proyecto
+4. ojo que netlify ofrece 125000 request gratis, dependiendo de la demanda de tu api puede servirte o no, si te pasas, debes pagar cargos extras, otra opción es digitalocean, al parecer tiene mejores planes si se trata de costear una api
