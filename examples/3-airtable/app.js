@@ -6,7 +6,7 @@ const fetchProducts = async () => {
     const products = data
       .map((product) => {
         const { id, url, name, price } = product;
-        return `<a href='product.html?id=${id}&name=${name}' class='product'>
+        return `<a href='product.html?id=${id}' class='product'>
       <img src='${url}' alt='${name}'/>
       <div class='info'>
       <h5>${name}</h5>
