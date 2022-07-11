@@ -1,3 +1,5 @@
+const { default: axios } = require('axios');
+
 const title = document.querySelector('.title h2');
 const result = document.querySelector('.result');
 
@@ -41,11 +43,21 @@ result.addEventListener('click', async function (e) {
     // console.log(voteNode)
     const votes = voteNode.dataset.votes;
     const newVotes = await modifyData(id, votes);
-    voteNode.textContent = `${newVotes} votes`;
-    voteNode.dataset.votes = newVotes;
+    title.textContent = 'Survey';
+
+    if (newVotes) {
+      voteNode.textContent = `${newVotes} votes`;
+      voteNode.dataset.votes = newVotes;
+    }
   }
 });
 // modify data
 async function modifyData(id, votes) {
-  return Number(votes) + 1;
+  title.textContent = 'Loading...';
+  try {
+    const { data } = await axios.put('/api/4-survey', { id, votes });
+  } catch (error) {
+    // console.log(error.response);
+    return null;
+  }
 }
