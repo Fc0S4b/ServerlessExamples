@@ -1,4 +1,5 @@
-require('dontenv').config();
+require('dotenv').config();
+const axios = require('axios');
 
 const url = `https://api.openweathermap.org/data/2.5/weather?&appid=${process.env.OPEN_WEATHER_API_KEY}&units=imperial&q=`;
 
@@ -12,9 +13,16 @@ exports.handler = async (event, context, cb) => {
     };
   }
   const { city } = JSON.parse(event.body);
-  console.log(city);
-  return {
-    statusCode: 200,
-    body: JSON.stringify(city),
-  };
+  try {
+    const resp = await axios.get(`${url}${city}`);
+    return {
+      statusCode: 200,
+      body: JSON.stringify(resp.data),
+    };
+  } catch (error) {
+    return {
+      statusCode: 404,
+      body: JSON.stringify(error),
+    };
+  }
 };
