@@ -6,9 +6,12 @@ const fetchProduct = async () => {
   try {
     const id = window.location.search;
     // console.log(id);
+    // const {
+    //   data: { fields },
+    // } = await axios(`/api/3-product${id}`);
     const {
       data: { fields },
-    } = await axios(`/api/3-product${id}`);
+    } = await axios(`/api/3-z-complete${id}`);
     console.log(fields);
     const { name, desc, price, image } = fields;
     result.innerHTML = `
