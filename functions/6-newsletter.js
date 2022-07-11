@@ -1,6 +1,6 @@
 require('dotenv').config();
 const axios = require('axios');
-
+// la api pasó a ser modo de pago asi que si no hay suscripción, retornará error 400
 const url = 'https://api.buttondown.email/v1/subscribers';
 
 exports.handler = async (event, context, cb) => {
@@ -12,6 +12,12 @@ exports.handler = async (event, context, cb) => {
     };
   }
   const { email } = JSON.parse(event.body);
+  if (!email) {
+    return {
+      statusCode: 400,
+      body: 'Please provide email value',
+    };
+  }
   try {
     const data = await axios.post(
       url,

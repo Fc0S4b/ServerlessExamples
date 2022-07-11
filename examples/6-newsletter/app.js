@@ -16,6 +16,7 @@ form.addEventListener('submit', async function (e) {
     console.log(error.response);
     alert.style.display = 'block';
     alert.textContent = 'Something went wrong. Please try again';
+    //ojo con el id que se muestra en error 400, no es recomendable mostrarlo (se ve en la consola)
   }
   form.classList.remove('loading');
 });
