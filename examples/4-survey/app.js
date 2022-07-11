@@ -30,3 +30,22 @@ const fetchData = async () => {
 window.addEventListener('load', () => {
   fetchData();
 });
+
+result.addEventListener('click', async function (e) {
+  // console.log(e.target)
+  if (e.target.classList.contains('fa-vote-yea')) {
+    const btn = e.target.parentElement;
+    const id = btn.dataset.id;
+    // console.log(id)
+    const voteNode = result.querySelector(`.vote-${id}`);
+    // console.log(voteNode)
+    const votes = voteNode.dataset.votes;
+    const newVotes = await modifyData(id, votes);
+    voteNode.textContent = `${newVotes} votes`;
+    voteNode.dataset.votes = newVotes;
+  }
+});
+// modify data
+async function modifyData(id, votes) {
+  return Number(votes) + 1;
+}
